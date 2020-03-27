@@ -20,8 +20,8 @@ h2c:
   enabled: false
 
 image:
-  repository: stefanprodan/podinfo
-  tag: 3.2.1
+  repository: jhidalgo3/podinfo
+  tag: 9.0.0
   pullPolicy: IfNotPresent
 
 service:
