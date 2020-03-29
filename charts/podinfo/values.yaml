@@ -57,13 +57,14 @@ linkerd:
     enabled: false
 
 ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  path: /*
-  hosts: []
-#    - podinfo.local
+  enabled: true
+  annotations: #{}
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  path: /.*
+  hosts: #[]
+    - podinfo.app.jhidalgo3.me
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

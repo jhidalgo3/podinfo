@@ -72,7 +72,7 @@ To access the Swagger UI open `<podinfo-host>/swagger/index.html` in a browser.
 Helm:
 
 ```bash
-helm repo add podinfo https://stefanprodan.github.io/podinfo
+helm repo add podinfo https://jhidalgo3.github.io/charts
 
 helm upgrade --install --wait frontend \
 --namespace test \
@@ -99,4 +99,33 @@ Docker:
 
 ```bash
 docker run -dp 9898:9898 stefanprodan/podinfo
+```
+# Helm Installation
+
+```sh
+helm3 install podinfo-9.0.0.tgz --generate-name --set image.tag="9.0.0" --set image.repository="jhidalgo3/podinfo"  
+```
+
+# Upgrade Charts
+
+Build new Chart
+
+```
+make build-charts
+cp podinfo-9.0.0.tgz ~/CODE/KUBERNETES_HELM/charts_jhidalgo3
+```
+
+Update repo helm index
+
+```sh
+cd ~/CODE/KUBERNETES_HELM/charts_jhidalgo3
+helm3 repo index . --url https://jhidalgo3.github.io/charts
+```
+
+Upgrade podinfo version
+
+```
+helm3 repo add podinfo https://jhidalgo3.github.io/charts
+helm3 repo update
+helm3 upgrade podinfo podinfo/podinfo
 ```

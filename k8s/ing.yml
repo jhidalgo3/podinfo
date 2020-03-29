@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  labels:
+    app: podinfo
+    chart: podinfo-9.0.0
+    heritage: Helm
+    release: podinfo
+  name: podinfo
+  namespace: default
+spec:
+  rules:
+  - host: podinfo.app.jhidalgo3.me
+    http:
+      paths:
+      - backend:
+          serviceName: podinfo
+          servicePort: 9898
