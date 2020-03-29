@@ -68,7 +68,7 @@ func main() {
 	viper.RegisterAlias("backendUrl", "backend-url")
 	hostname, _ := os.Hostname()
 	viper.SetDefault("jwt-secret", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")
-	viper.SetDefault("ui-logo", "https://raw.githubusercontent.com/stefanprodan/podinfo/gh-pages/cuddle_clap.gif")
+	viper.SetDefault("ui-logo", "https://raw.githubusercontent.com/jhidalgo3/charts/gh-pages/assets/microbot.png")
 	viper.Set("hostname", hostname)
 	viper.Set("version", version.VERSION)
 	viper.Set("revision", version.REVISION)

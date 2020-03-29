@@ -22,7 +22,7 @@ h2c:
 image:
   repository: jhidalgo3/podinfo
   tag: 9.0.0
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   enabled: true

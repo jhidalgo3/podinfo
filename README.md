@@ -120,6 +120,8 @@ Update repo helm index
 ```sh
 cd ~/CODE/KUBERNETES_HELM/charts_jhidalgo3
 helm3 repo index . --url https://jhidalgo3.github.io/charts
+
+git add index.yaml podinfo-9.0.0.tgz
 ```
 
 Upgrade podinfo version

@@ -13,7 +13,7 @@ EXTRA_RUN_ARGS?=
 run:
 	go run -ldflags "-s -w -X github.com/stefanprodan/podinfo/pkg/version.REVISION=$(GIT_COMMIT)" cmd/podinfo/* \
 	--level=debug --grpc-port=9999 --backend-url=https://httpbin.org/status/401 --backend-url=https://httpbin.org/status/500 \
-	--ui-logo=https://raw.githubusercontent.com/stefanprodan/podinfo/gh-pages/cuddle_clap.gif $(EXTRA_RUN_ARGS)
+	--ui-logo=https://raw.githubusercontent.com/jhidalgo3/charts/gh-pages/assets/microbot.png $(EXTRA_RUN_ARGS)
 
 test:
 	go test -v -race ./...
