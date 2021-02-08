@@ -1,9 +1,9 @@
 # podinfo
 
-[![CircleCI](https://circleci.com/gh/stefanprodan/podinfo.svg?style=svg)](https://circleci.com/gh/stefanprodan/podinfo)
-[![conftest](https://github.com/stefanprodan/podinfo/workflows/test/badge.svg)](https://github.com/stefanprodan/podinfo/blob/master/.github/workflows/test.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/stefanprodan/podinfo)](https://goreportcard.com/report/github.com/stefanprodan/podinfo)
-[![Docker Pulls](https://img.shields.io/docker/pulls/stefanprodan/podinfo)](https://hub.docker.com/r/stefanprodan/podinfo)
+[![CircleCI](https://circleci.com/gh/jhidalgo3/podinfo.svg?style=svg)](https://circleci.com/gh/jhidalgo3/podinfo)
+[![conftest](https://github.com/jhidalgo3/podinfo/workflows/test/badge.svg)](https://github.com/jhidalgo3/podinfo/blob/master/.github/workflows/test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jhidalgo3/podinfo)](https://goreportcard.com/report/github.com/jhidalgo3/podinfo)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jhidalgo3/podinfo)](https://hub.docker.com/r/jhidalgo3/podinfo)
 
 Podinfo is a tiny web application made with Go that showcases best practices of running microservices in Kubernetes.
 
@@ -53,7 +53,7 @@ gRPC API:
 
 Web UI:
 
-![podinfo-ui](https://raw.githubusercontent.com/stefanprodan/podinfo/gh-pages/screens/podinfo-ui-v3.png)
+![podinfo-ui](https://raw.githubusercontent.com/jhidalgo3/podinfo/gh-pages/screens/podinfo-ui-v3.png)
 
 To access the Swagger UI open `<podinfo-host>/swagger/index.html` in a browser.
 
@@ -72,13 +72,14 @@ To access the Swagger UI open `<podinfo-host>/swagger/index.html` in a browser.
 Helm:
 
 ```bash
-helm repo add podinfo https://jhidalgo3.github.io/charts
+helm repo add jhidalgo3 https://jhidalgo3.github.io/charts
 
 helm upgrade --install --wait frontend \
 --namespace test \
 --set replicaCount=2 \
 --set backend=http://backend-podinfo:9898/echo \
-podinfo/podinfo
+--set "ingress.hosts={podinfo.app.jhidalgo3.me}" \
+--dry-run jhidalgo3/podinfo
 
 # Test pods have hook-delete-policy: hook-succeeded
 helm test frontend
@@ -86,19 +87,19 @@ helm test frontend
 helm upgrade --install --wait backend \
 --namespace test \
 --set hpa.enabled=true \
-podinfo/podinfo
+jhidalgo3/podinfo
 ```
 
 Kustomize:
 
 ```bash
-kubectl apply -k github.com/stefanprodan/podinfo//kustomize
+kubectl apply -k github.com/jhidalgo3/podinfo/kustomize
 ```
 
 Docker:
 
 ```bash
-docker run -dp 9898:9898 stefanprodan/podinfo
+docker run -dp 9898:9898 jhidalgo3/podinfo
 ```
 # Helm Installation
 
@@ -129,5 +130,5 @@ Upgrade podinfo version
 ```
 helm3 repo add podinfo https://jhidalgo3.github.io/charts
 helm3 repo update
-helm3 upgrade podinfo podinfo/podinfo
+helm3 upgrade podinfo jhidalgo3/podinfo
 ```
